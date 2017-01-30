@@ -16,17 +16,30 @@
 
 var createCarRecord = function(val1, val2, val3, val4){
 
-  var carInfo = {}
-
-  if(val1 === '' && val2 === '' && isNaN(val3) === true && val4 === ''){
-      carInfo.make = val1;
-      carInfo.model = val2;
-      carInfo.year = val3;
-      carInfo.license = val4;
+  var carInfo = {
+    make: val1,
+    model:val2,
+    year: val3,
+    license: val4,
   }
-      console.log(carInfo)
 
-    return carInfo;
+
+  if(carInfo.make === undefined || carInfo.model === undefined || carInfo.year === undefined || carInfo.license === undefined){
+    return 'new record must have make, model, year, and license values';
+  }else if(typeof carInfo.make !== 'string' || typeof carInfo.model !== 'string' || typeof carInfo.license !== 'string'){
+    return '1st, 2nd, and 4th arguments must be String';
+  }else if(typeof carInfo.year !== typeof 0){
+    return '3rd argument must be a Number'
+  }else{
+    carInfo = carInfo;
+  }
+
+  // if(carInfo.make === undefined && carInfo.model === undefined && carInfo.year === undefined && carInfo.license === undefined){
+  // return 'new record must have make, model, year, and license values';
+  // }
+
+
+  return carInfo
 
 }
 
@@ -36,9 +49,7 @@ var createCarRecord = function(val1, val2, val3, val4){
 
 
 
-
 //*-*~*~*~*~*~ Don't Touch *~*~*~*~*~*~*~*~*~*~*~
-
 var newCar1 = createCarRecord('Ford', 'Pinto', 1969, 'IOU7S2')
 var newCar2 = createCarRecord('Pontiac', 'Azteca', 2001, '48NLL1' )
 var newCar3 = createCarRecord('Jeep', 'Wrangler', 1987, '8HPN02' )
